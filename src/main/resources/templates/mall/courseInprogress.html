@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mall/header::head-fragment('新蜂教育-订单列表','my-orders')">
+</head>
+<link rel="shortcut icon" th:href="@{/admin/dist/img/favicon.ico}"/>
+<link rel="stylesheet" th:href="@{/admin/dist/css/font-awesome.min.css}">
+<!-- Ionicons -->
+<link rel="stylesheet" th:href="@{/admin/dist/css/ionicons.min.css}">
+<link rel="stylesheet" th:href="@{/admin/dist/css/main.css}">
+<link rel="stylesheet" th:href="@{/admin/plugins/bootstrap/css/bootstrap.css}"/>
+<link rel="stylesheet" th:href="@{/admin/plugins/sweetalert/sweetalert.css}"/>
+<link rel="stylesheet" th:href="@{/admin/plugins/jqgrid-5.3.0/ui.jqgrid-bootstrap4.css}"/>
+<!-- Theme style -->
+<link rel="stylesheet" th:href="@{/admin/dist/css/adminlte.min.css}">
+<style>
+    .ui-jqgrid tr.jqgrow td {
+        white-space: normal !important;
+        height: auto;
+        vertical-align: text-top;
+        padding-top: 2px;
+    }
+
+    a {
+        color: #1baeae;
+        text-decoration: none;
+        background-color: transparent;
+        -webkit-text-decoration-skip: objects;
+    }
+
+    a:hover {
+        color: white;
+        background-color: #1baeae;
+    }
+
+</style>
+<body>
+<header th:replace="mall/header::header-fragment"></header>
+<!-- nav -->
+<nav th:replace="mall/header::nav-fragment"></nav>
+
+<!-- personal -->
+<div id="personal">
+    <div class="self-info center">
+        <!-- sidebar -->
+        <div th:replace="mall/personal-sidebar::sidebar-fragment"></div>
+
+        <div class="content-wrapper">
+            <!-- Content Header (图标header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">进行中课程</h3>
+                        </div> <!-- /.card-body -->
+                        <div class="card-body">
+                            <table id="jqGrid" class="table table-bordered">
+                            </table>
+                            <div id="jqGridPager"></div>
+                        </div><!-- /.card-body -->
+                    </div>
+                </div><!-- /.container-fluid -->
+            </div>
+        </div>
+    </div>
+</div>
+        <div th:replace="mall/footer::footer-fragment"></div>
+
+        <!-- jQuery -->
+        <script th:src="@{/admin/plugins/jquery/jquery.min.js}"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script th:src="@{/admin/plugins/jQueryUI/jquery-ui.min.js}"></script>
+        <!-- Bootstrap 4 -->
+        <script th:src="@{/admin/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+        <!-- AdminLTE App -->
+        <script th:src="@{/admin/dist/js/adminlte.min.js}"></script>
+        <!-- jqgrid -->
+        <script th:src="@{/admin/plugins/jqgrid-5.3.0/jquery.jqGrid.min.js}"></script>
+        <script th:src="@{/admin/plugins/jqgrid-5.3.0/grid.locale-cn.js}"></script>
+        <script th:src="@{/admin/plugins/jqgrid-5.3.0/grid.locale-cn.js}"></script>
+        <!-- sweetalert -->
+        <script th:src="@{/admin/plugins/sweetalert/sweetalert.min.js}"></script>
+        <script th:src="@{/admin/dist/js/public.js}"></script>
+        <script th:src="@{/mall/js/inProgressCourses.js}"></script>
+</body>
+</html>
