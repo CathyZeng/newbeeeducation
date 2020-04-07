@@ -10,7 +10,6 @@ import ltd.newbee.mall.entity.NewBeeMallOrder;
 import ltd.newbee.mall.service.NewBeeMallOrderService;
 import ltd.newbee.mall.service.NewBeeMallShoppingCartService;
 import ltd.newbee.mall.util.PageQueryUtil;
-import ltd.newbee.mall.util.PageResult;
 import ltd.newbee.mall.util.Result;
 import ltd.newbee.mall.util.ResultGenerator;
 import org.springframework.stereotype.Controller;
@@ -66,7 +65,7 @@ public class OrderController {
 
     @RequestMapping(value = "/mall/inProgressOrders/list", method = RequestMethod.GET)
     @ResponseBody
-    public PageResult mallCourseInprogress(@RequestParam Map<String, Object> params, HttpServletRequest request, HttpSession httpSession) {
+    public Result mallCourseInprogress(@RequestParam Map<String, Object> params, HttpServletRequest request, HttpSession httpSession) {
         NewBeeMallUserVO user = (NewBeeMallUserVO) httpSession.getAttribute(Constants.MALL_USER_SESSION_KEY);
         params.put("userId", user.getUserId());
         params.put("userId", "1");
@@ -77,7 +76,7 @@ public class OrderController {
         params.put("limit", Constants.ORDER_SEARCH_PAGE_LIMIT);
         //封装我的订单数据
         PageQueryUtil pageUtil = new PageQueryUtil(params);
-        return newBeeMallOrderService.getInprogressCoursesPage(pageUtil);
+        return ResultGenerator.genSuccessResult(newBeeMallOrderService.getInprogressCoursesPage(pageUtil));
 
     }
 
@@ -89,7 +88,7 @@ public class OrderController {
 
     @RequestMapping(value = "/mall/closedOrders/list", method = RequestMethod.GET)
     @ResponseBody
-    public PageResult mallCourseCompleted(@RequestParam Map<String, Object> params, HttpServletRequest request, HttpSession httpSession) {
+    public Result mallCourseCompleted(@RequestParam Map<String, Object> params, HttpServletRequest request, HttpSession httpSession) {
         NewBeeMallUserVO user = (NewBeeMallUserVO) httpSession.getAttribute(Constants.MALL_USER_SESSION_KEY);
         params.put("userId", user.getUserId());
         params.put("userId", "1");
@@ -100,7 +99,7 @@ public class OrderController {
         params.put("limit", Constants.ORDER_SEARCH_PAGE_LIMIT);
         //封装我的订单数据
         PageQueryUtil pageUtil = new PageQueryUtil(params);
-        return newBeeMallOrderService.getInprogressCoursesPage(pageUtil);
+        return ResultGenerator.genSuccessResult(newBeeMallOrderService.getInprogressCoursesPage(pageUtil));
 
     }
 

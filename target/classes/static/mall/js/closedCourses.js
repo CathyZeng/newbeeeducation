@@ -1,14 +1,15 @@
 $(function () {
     $("#jqGrid").jqGrid({
-        url: '/admin/goods/list',
-//        url:'/mall/inProgressOrders/list',
+//        url: '/admin/goods/list',
+        url:'/mall/closedOrders/list',
         datatype: "json",
         colModel: [
             //{label: 'id', name: 'orderId', index: 'orderId', width: 50, key: true, hidden: true},
             {label: '课程编号', name: 'goodsId', index: 'goodsId', width: 120},
              {label: '课程名称', name: 'goodsName', index: 'goodsName', width: 120},
             {label: '课程价格', name: 'sellingPrice', index: 'sellingPrice', width: 60},
-            {label: '课程状态', name: 'goodsSellStatus', index: 'goodsSellStatus', width: 80, formatter: orderStatusFormatter},
+            {label: '课程状态', name: 'orderStatus', index: 'orderStatus', width: 80, formatter: orderStatusFormatter},
+//            {label: '课程状态', name: 'goodsSellStatus', index: 'goodsSellStatus', width: 80, formatter: orderStatusFormatter},
 //            {label: '支付方式', name: 'payType', index: 'payType', width: 80,formatter:payTypeFormatter},
 //            {label: '收件人地址', name: 'userAddress', index: 'userAddress', width: 10, hidden: true},
             {label: '购买时间', name: 'createTime', index: 'createTime', width: 120}
@@ -47,7 +48,8 @@ $(function () {
 
     function orderStatusFormatter(cellvalue) {
         //订单状态:0.待支付 1.已支付 2.配货完成 3:出库成功 4.交易成功 -1.手动关闭 -2.超时关闭 -3.商家关闭
-       return "课程已结束";
+       if(cellvalue==4)
+          return "课程已结束";
     }
 
     function payTypeFormatter(cellvalue) {

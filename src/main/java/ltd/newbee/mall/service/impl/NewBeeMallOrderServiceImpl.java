@@ -58,6 +58,16 @@ public class NewBeeMallOrderServiceImpl implements NewBeeMallOrderService {
         List<NewBeeMallOrderItem> orderItems = new ArrayList<>();
         if (!CollectionUtils.isEmpty(orderIds))
             orderItems = newBeeMallOrderItemMapper.selectByOrderIds(orderIds);
+        for(NewBeeMallOrder order : newBeeMallOrders){
+            Long orderId1 = order.getOrderId();
+            int orderStatus = order.getOrderStatus();
+            for(NewBeeMallOrderItem orderItem : orderItems){
+                Long orderId2 = orderItem.getOrderId();
+                if(orderId1.equals(orderId2)){
+                    orderItem.setOrderStatus(order.getOrderStatus());
+                }
+            }
+        }
         int total = newBeeMallOrderItemMapper.getTotalNewBeeMallOrderItems(pageUtil);
         PageResult pageResult = new PageResult(orderItems, total, pageUtil.getLimit(), pageUtil.getPage());
         return pageResult;

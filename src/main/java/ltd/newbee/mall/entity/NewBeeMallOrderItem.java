@@ -19,6 +19,17 @@ public class NewBeeMallOrderItem {
 
     private Date createTime;
 
+    private Byte orderStatus;
+
+    public Byte getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(Byte orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+
     public Long getOrderItemId() {
         return orderItemId;
     }
